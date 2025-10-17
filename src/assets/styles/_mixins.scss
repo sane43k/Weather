@@ -1,0 +1,20 @@
+@mixin font-face($weight-name, $font-weight) {
+  @font-face {
+    font-family: Noto Sans;
+    src: url(../fonts/NotoSans-#{$weight-name}.ttf);
+    font-weight: $font-weight;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+@mixin md-screen {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+@mixin sm-screen {
+  @media (max-width: 576px) {
+    @content;
+  }
+}

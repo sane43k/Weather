@@ -1,0 +1,134 @@
+@use "./mixins" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Noto Sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font: var(--body-large);
+  color: var(--on-background);
+  background-color: var(--background);
+  @include md-screen {
+    font: var(--body-medium);
+  }
+  @include sm-screen {
+    font: var(--body-small);
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+h1,
+.h1-46pt {
+  font: 46px;
+  font-weight: 600;
+}
+
+h2,
+.h2-38pt {
+  font: 38px;
+  font-weight: 600;
+}
+
+ul,
+ol,
+ul li,
+ol li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link {
+  font-family: Noto Sans, sans-serif;
+  font: var(--body-large);
+  font-weight: 400;
+  color: var(--on-surface);
+  text-decoration: none;
+  cursor: pointer;
+  @include md-screen {
+    font: var(--body-medium);
+  }
+  @include sm-screen {
+    font: var(--body-small);
+  }
+  &:hover {
+    opacity: 0.7;
+  }
+  &:active {
+    opacity: initial;
+  }
+}
+
+// .dark-ngx-charts {
+//     .ngx-charts {
+//         text {
+//             font: 22px;
+//             fill: var(--white);
+//         }
+//         .ng-star-inserted {
+//             font: 14px;
+//         }
+//         .textDataLabel {
+//             font: 12px;
+//         }
+//         .gridline-path {
+//             stroke: var(--gray-transparent);
+//         }
+//     }
+// }
+
+// ::-webkit-scrollbar {
+//     height: 5px;
+//     width: 5px;
+// }
+// ::-webkit-scrollbar-track {
+//     background-color: transparent;
+//     border-radius: 10px;
+// }
+// ::-webkit-scrollbar-thumb {
+//     background-color: var(--green-light);
+//     border-radius: 10px;
+//     &:hover {
+//         background-color: var(--green);
+//     }
+// }

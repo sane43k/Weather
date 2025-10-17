@@ -1,0 +1,94 @@
+@use "./mixins" as *;
+
+.btn {
+  font-family: Noto Sans, sans-serif;
+  font: var(--body-large);
+  font-weight: 600;
+  line-height: 115%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.1s linear;
+  @include md-screen {
+    font: var(--body-medium);
+    font-weight: 600;
+  }
+  @include sm-screen {
+    font: var(--body-small);
+    font-weight: 600;
+  }
+  &-primary {
+    color: var(--on-surface);
+    background-color: var(--surface-bright);
+    box-shadow: var(--shadow);
+    border: 1px solid transparent;
+    border-radius: 15px;
+    padding: 18px 20px;
+    gap: 8px;
+    &:hover {
+      opacity: 0.8;
+    }
+    &:disabled {
+      opacity: 0.6;
+    }
+    &.fixed-size {
+      height: 48px;
+      width: 130px;
+      @include sm-screen {
+        height: 38px;
+        width: 120px;
+      }
+    }
+    &-blue {
+      color: var(--on-primary-fixed);
+      background-color: var(--primary-fixed-dim);
+      box-shadow: var(--level0);
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  &-round {
+    height: 45px;
+    width: 45px;
+    color: var(--on-surface);
+    background-color: var(--surface-container-high);
+    border: 1px solid transparent;
+    border-radius: 50%;
+    &:hover {
+      background-color: var(--surface-container-highest);
+    }
+    &:disabled {
+      opacity: 0.6;
+    }
+    @include md-screen {
+      height: 40px;
+      width: 40px;
+    }
+    @include sm-screen {
+      height: 35px;
+      width: 35px;
+    }
+  }
+  &-dropdown {
+    height: 30px;
+    width: 30px;
+    background-color: var(--btn);
+    border: transparent;
+    border-radius: 50%;
+    // background-image: url(../images/dropdown_black.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: var(--btn-hover);
+    }
+    &:disabled {
+      opacity: 0.6;
+    }
+    &.open {
+      transform: rotate(180deg);
+    }
+  }
+}

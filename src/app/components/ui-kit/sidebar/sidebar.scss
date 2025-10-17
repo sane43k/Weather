@@ -1,0 +1,53 @@
+@use "../../../../assets/styles/mixins" as *;
+
+.sidebar {
+  color: var(--on-surface);
+  height: 100vh;
+  width: 270px;
+  background-color: var(--surface);
+  box-shadow: var(--light-shadow);
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 100px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -270px;
+  z-index: 4;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: auto;
+  transition: all 0.3s ease;
+  @include sm-screen {
+    width: 100vw;
+    right: -100vw;
+  }
+  &.opened {
+    right: 0;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  button[title="Close menu"] {
+    align-self: flex-end;
+  }
+  .main-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    &__list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+    }
+  }
+  .togglers-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "logo": "Weather",
+  "header": {
+    "home": "Home",
+    "favorites": "Favorites",
+    "compare": "Compare",
+    "signIn": "Sign in",
+    "placeholder": "Enter city"
+  }
+}

@@ -1,0 +1,10 @@
+<div class="logo" (click)="navigateToHome()">
+  <img
+    src="/assets/images/logos/umbrella_{{ iconColor }}_40x40.svg"
+    class="logo__icon"
+    alt="Logo icon"
+  />
+  <p class="logo__text" [class.hidden]="hideTextOnSmallScreen">
+    {{ "logo" | translate }}
+  </p>
+</div>

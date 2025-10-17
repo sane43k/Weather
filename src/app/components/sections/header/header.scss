@@ -1,0 +1,57 @@
+@use "../../../../assets/styles/mixins" as *;
+
+.header-section {
+  color: var(--on-surface);
+  height: 80px;
+  width: 100%;
+  background-color: var(--header-background-transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  @include sm-screen {
+    height: 60px;
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    .input-wrapper {
+      width: 370px;
+      @include sm-screen {
+        width: 270px;
+      }
+    }
+    .main-menu {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      @include md-screen {
+        display: none;
+      }
+      &__list {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+    }
+    .togglers-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      @include sm-screen {
+        display: none;
+      }
+    }
+    app-sidebar {
+      display: none;
+      @include md-screen {
+        display: initial;
+      }
+    }
+  }
+}

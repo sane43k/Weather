@@ -1,0 +1,57 @@
+@use "../../../../../assets/styles/mixins" as *;
+
+:host {
+  width: 100%;
+}
+
+.custom-input {
+  font: var(--body-large);
+  color: var(--on-surface);
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  @include md-screen {
+    font: var(--body-medium);
+  }
+  @include sm-screen {
+    font: var(--body-small);
+  }
+  input {
+    font-family: Noto Sans, sans-serif;
+    font: var(--body-large);
+    font-weight: 400;
+    line-height: 115%;
+    color: var(--on-surface);
+    height: 48px;
+    width: 100%;
+    background-color: var(--surface-bright);
+    border: 1px solid transparent;
+    box-shadow: var(--shadow);
+    border-radius: 14px;
+    padding: 8px 16px;
+    transition: all 0.2s ease;
+    @include md-screen {
+      font: var(--body-medium);
+      height: 38px;
+    }
+    @include sm-screen {
+      font: var(--body-small);
+    }
+    &:hover {
+      border: 1px solid var(--gray);
+    }
+    &:focus {
+      caret-color: var(--on-surface);
+      border: 1px solid var(--on-surface);
+      outline: none;
+    }
+    &:disabled {
+      opacity: 0.6;
+    }
+    &::placeholder {
+      color: var(--gray);
+    }
+  }
+}
