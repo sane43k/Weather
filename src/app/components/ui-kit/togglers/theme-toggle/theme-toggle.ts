@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { ThemeService } from '../../../../services/theme-service';
 import { TogglersStore } from '../../../../stores/togglers-store';
 
 @Component({
@@ -10,10 +9,8 @@ import { TogglersStore } from '../../../../stores/togglers-store';
 })
 export class ThemeToggle {
   private togglersStore = inject(TogglersStore);
-  // private themeService = inject(ThemeService);
 
   theme = this.togglersStore.theme;
-  // theme = this.themeService.theme;
 
   toggleTheme(): void {
     const newTheme =
@@ -23,6 +20,5 @@ export class ThemeToggle {
         ? 'system'
         : 'light';
     this.togglersStore.setTheme(newTheme);
-    // this.themeService.setTheme(newTheme);
   }
 }

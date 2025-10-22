@@ -1,41 +1,17 @@
 import { isPlatformBrowser } from '@angular/common';
-import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Theme } from '../stores/togglers-store';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
   private platformId = inject(PLATFORM_ID);
-  private currentTheme = signal<'light' | 'dark' | 'system'>('system');
 
-  theme = this.currentTheme.asReadonly();
+  applyTheme(theme: Theme): void {
+    if (!isPlatformBrowser(this.platformId)) return;
 
-  constructor() {
-    this.monitorSystemTheme();
-    this.setTheme(this.currentTheme());
-  }
-
-  setTheme(theme: 'light' | 'dark' | 'system') {
-    if (isPlatformBrowser(this.platformId)) {
-      this.currentTheme.set(theme);
-      this.applyTheme(theme);
-    }
-  }
-
-  private monitorSystemTheme(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      mediaQuery.addEventListener('change', () => {
-        if (this.currentTheme() === 'system') {
-          this.applyTheme('system');
-        }
-      });
-    }
-  }
-
-  private applyTheme(theme: 'light' | 'dark' | 'system'): void {
     const body = document.body;
-
     body.classList.remove('light-theme', 'dark-theme');
 
     if (theme === 'light') {
@@ -48,5 +24,12 @@ export class ThemeService {
       ).matches;
       body.classList.add(prefersDark ? 'dark-theme' : 'light-theme');
     }
+  }
+
+  monitorSystemTheme(toggleSystemTheme: () => void): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', () => toggleSystemTheme());
   }
 }

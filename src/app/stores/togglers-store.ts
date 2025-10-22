@@ -28,14 +28,23 @@ export const TogglersStore = signalStore(
     const translationService = inject(TranslationService);
     const themeService = inject(ThemeService);
 
-    const setLang = (lang: Language) => {
-      translationService.setLanguage(lang);
+    const setLang = (lang: Language): void => {
       patchState(store, { language: lang });
+      translationService.loadTranslations(lang);
     };
-    const setTheme = (theme: Theme) => {
-      themeService.setTheme(theme);
+    const setTheme = (theme: Theme): void => {
       patchState(store, { theme });
+      themeService.applyTheme(theme);
     };
+
+    translationService.loadTranslations(store.language());
+
+    themeService.applyTheme(store.theme());
+    themeService.monitorSystemTheme(() => {
+      if (store.theme() === 'system') {
+        themeService.applyTheme('system');
+      }
+    });
 
     return { setLang, setTheme };
   })
