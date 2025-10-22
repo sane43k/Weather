@@ -6,5 +6,10 @@
     "compare": "Сравнить",
     "signIn": "Войти",
     "placeholder": "Введите город"
+  },
+  "cityCard": {
+    "feelsLike": "Ощущается как",
+    "highest": "Макс.",
+    "lowest": "Мин."
   }
 }

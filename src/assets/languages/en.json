@@ -6,5 +6,10 @@
     "compare": "Compare",
     "signIn": "Sign in",
     "placeholder": "Enter city"
+  },
+  "cityCard": {
+    "feelsLike": "Feels Like",
+    "highest": "H",
+    "lowest": "L"
   }
 }

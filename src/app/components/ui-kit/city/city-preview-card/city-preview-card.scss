@@ -1,0 +1,100 @@
+@use "../../../../../assets/styles/mixins" as *;
+
+.city-card {
+  color: var(--on-surface);
+  height: 290px;
+  border-radius: 14px;
+  background-color: var(--btn-bg);
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.1s linear;
+  cursor: pointer;
+  @include md-screen {
+    height: 270px;
+  }
+  @include sm-screen {
+    height: 150px;
+    padding: 20px;
+    justify-content: space-between;
+  }
+  &:hover {
+    background-color: var(--btn-bg-hover);
+  }
+  &__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    @include sm-screen {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    @include sm-screen {
+      align-items: flex-start;
+      gap: 7px;
+    }
+  }
+  &__name {
+    font-size: 28px;
+    @include md-screen {
+      font-size: 26px;
+    }
+    @include sm-screen {
+      font-size: 24px;
+    }
+  }
+  &__weather {
+    font-weight: 200;
+  }
+  &__temp {
+    font-size: 80px;
+    font-weight: 200;
+    line-height: 1;
+    @include md-screen {
+      font-size: 70px;
+    }
+    @include sm-screen {
+      font-size: 60px;
+    }
+  }
+  &__details {
+    font-size: 16px;
+    font-weight: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    @include md-screen {
+      font-size: 14px;
+    }
+    @include sm-screen {
+      font-size: 12px;
+      //   width: 100%;
+      //   flex-direction: row;
+      //   justify-content: space-between;
+      align-self: flex-end;
+    }
+  }
+  &__feels {
+    span {
+      font-weight: 400;
+    }
+  }
+  &__range {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+}

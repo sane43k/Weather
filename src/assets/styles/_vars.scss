@@ -2,8 +2,6 @@
   // Colors
   --black: #1c1c1d;
   --white: #e3e2e6;
-  --btn: rgba(180, 184, 204, 0.12);
-  --btn-hover: rgba(180, 184, 204, 0.26);
   --gray: #c5ccd4;
   --light-blue: rgb(244, 251, 255);
   --blue: #66a2f4;
@@ -119,27 +117,13 @@
   --title-small-size: 0.875rem;
   --title-small-tracking: 0.006rem;
   --title-small-weight: 500;
-  --corner-extra-large: 28px;
-  --corner-extra-large-top: 28px 28px 0 0;
-  --corner-extra-small: 4px;
-  --corner-extra-small-top: 4px 4px 0 0;
-  --corner-full: 9999px;
-  --corner-large: 16px;
-  --corner-large-end: 0 16px 16px 0;
-  --corner-large-start: 16px 0 0 16px;
-  --corner-large-top: 16px 16px 0 0;
-  --corner-medium: 12px;
-  --corner-none: 0;
-  --corner-small: 8px;
-  --dragged-state-layer-opacity: 0.16;
-  --focus-state-layer-opacity: 0.12;
-  --hover-state-layer-opacity: 0.08;
-  --pressed-state-layer-opacity: 0.12;
 }
 
 .light-theme {
   --header-background-transparent: #faf9fdc1;
   --background: #faf9fd;
+  --btn-bg: #f1f0f5;
+  --btn-bg-hover: #ebeaef;
   --error: #ba1a1a;
   --error-container: #ffdad6;
   --inverse-on-surface: #f2f0f4;
@@ -195,6 +179,8 @@
 .dark-theme {
   --header-background-transparent: #121316c1;
   --background: #121316;
+  --btn-bg: #1c1c1f;
+  --btn-bg-hover: #232327;
   --error: #ffb4ab;
   --error-container: #93000a;
   --inverse-on-surface: #2f3033;
@@ -229,7 +215,9 @@
   --secondary-fixed: #dae2f9;
   --secondary-fixed-dim: #bec6dc;
   --surface: #121316;
-  --surface-bright: #38393c;
+  // --surface-bright: #38393c;
+  // --surface-bright: #1a1a1c;
+  --surface-bright: #1c1c1f;
   --surface-container: #1f2022;
   --surface-container-high: #292a2c;
   --surface-container-highest: #343537;

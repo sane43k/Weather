@@ -43,7 +43,7 @@
     &-blue {
       color: var(--on-primary-fixed);
       background-color: var(--primary-fixed-dim);
-      box-shadow: var(--level0);
+      box-shadow: none;
       &:hover {
         opacity: 0.8;
       }
@@ -53,15 +53,9 @@
     height: 45px;
     width: 45px;
     color: var(--on-surface);
-    background-color: var(--surface-container-high);
+    background-color: var(--btn-bg);
     border: 1px solid transparent;
     border-radius: 50%;
-    &:hover {
-      background-color: var(--surface-container-highest);
-    }
-    &:disabled {
-      opacity: 0.6;
-    }
     @include md-screen {
       height: 40px;
       width: 40px;
@@ -69,6 +63,15 @@
     @include sm-screen {
       height: 35px;
       width: 35px;
+    }
+    &:hover {
+      background-color: var(--btn-bg-hover);
+    }
+    &:disabled {
+      opacity: 0.6;
+    }
+    svg {
+      fill: var(--on-surface);
     }
   }
   &-dropdown {
