@@ -1,0 +1,11 @@
+<button
+  type="button"
+  class="btn btn-primary btn-primary-blue fixed-size"
+  (click)="handleClick()"
+>
+  {{
+    isLoggedIn()
+      ? ("authForm.logOut" | translate)
+      : ("authForm.logIn" | translate)
+  }}
+</button>

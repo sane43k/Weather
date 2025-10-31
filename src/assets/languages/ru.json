@@ -4,8 +4,25 @@
     "home": "Главное",
     "favorites": "Избранное",
     "compare": "Сравнить",
-    "signIn": "Войти",
-    "placeholder": "Введите город"
+    "enterCity": "Введите город"
+  },
+  "authForm": {
+    "logIn": "Войти",
+    "logOut": "Выйти",
+    "socialNetworks": "через соц.сети",
+    "noAccount": "У вас нет аккаунта?",
+    "haveAccount": "Уже есть аккаунт?",
+    "signUp": "Зарегистрироваться",
+    "email": "Эл.почта",
+    "password": "Пароль",
+    "repeatPassword": "Повторите пароль",
+    "requirements": {
+      "passwordLength": "Длина пароля не меньше 9 символов",
+      "availableCharacters": "Только латинские буквы, цифры и спецсимволы",
+      "lowercaseLetter": "Хотя бы одна строчная буква (a–z)",
+      "uppercaseLetter": "Хотя бы одна заглавная буква (A–Z)",
+      "specialCharacter": "Хотя бы один спецсимвол !@#$%^&*()\\-_=+{};:,<.>"
+    }
   },
   "cityCard": {
     "feelsLike": "Ощущается как",

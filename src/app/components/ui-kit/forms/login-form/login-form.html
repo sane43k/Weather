@@ -1,0 +1,44 @@
+<form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <app-logo iconColor="blue"></app-logo>
+  <div class="form-wrapper">
+    <div class="inputs-wrapper">
+      <app-custom-input
+        type="email"
+        inputId="email-input"
+        [placeholder]="'authForm.email' | translate"
+        formControlName="email"
+      ></app-custom-input>
+      <app-custom-input
+        type="password"
+        inputId="password-input"
+        [placeholder]="'authForm.password' | translate"
+        formControlName="password"
+      ></app-custom-input>
+    </div>
+    <div class="btns-wrapper">
+      <button
+        type="submit"
+        class="btn btn-primary btn-primary-blue"
+        [disabled]="isStepInvalid()"
+      >
+        {{ "authForm.logIn" | translate }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="getSocialNetworksInfo()"
+      >
+        {{ "authForm.logIn" | translate }}
+        {{ "authForm.socialNetworks" | translate }}
+      </button>
+    </div>
+  </div>
+  <div class="change-form-wrapper">
+    <span>
+      {{ "authForm.noAccount" | translate }}
+    </span>
+    <a class="link link-blue" routerLink="/signup">
+      {{ "authForm.signUp" | translate }}
+    </a>
+  </div>
+</form>

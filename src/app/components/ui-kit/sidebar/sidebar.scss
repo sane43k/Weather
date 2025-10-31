@@ -1,10 +1,10 @@
 @use "../../../../assets/styles/mixins" as *;
 
 .sidebar {
-  color: var(--on-surface);
+  color: var(--on-background);
   height: 100vh;
   width: 270px;
-  background-color: var(--surface);
+  background-color: var(--background);
   box-shadow: var(--light-shadow);
   padding: 20px 30px;
   display: flex;

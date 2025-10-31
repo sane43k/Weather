@@ -40,20 +40,15 @@
   <nav class="main-menu">
     <ul class="main-menu__list">
       <li class="main-menu__list__item">
-        <button
-          type="button"
-          class="btn btn-primary btn-primary-blue fixed-size"
-        >
-          {{ "header.signIn" | translate }}
-        </button>
+        <app-nav-login-btn></app-nav-login-btn>
       </li>
       <li class="main-menu__list__item">
-        <a routerLink="favorites" class="link">{{
+        <a routerLink="/favorites" class="link">{{
           "header.favorites" | translate
         }}</a>
       </li>
       <li class="main-menu__list__item">
-        <a routerLink="compare" class="link">{{
+        <a routerLink="/compare" class="link">{{
           "header.compare" | translate
         }}</a>
       </li>

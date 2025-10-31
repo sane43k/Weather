@@ -4,8 +4,25 @@
     "home": "Home",
     "favorites": "Favorites",
     "compare": "Compare",
-    "signIn": "Sign in",
-    "placeholder": "Enter city"
+    "enterCity": "Enter city"
+  },
+  "authForm": {
+    "logIn": "Log in",
+    "logOut": "Log out",
+    "socialNetworks": "with social networks",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "signUp": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "repeatPassword": "Repeat password",
+    "requirements": {
+      "passwordLength": "Password length at least 9 characters",
+      "availableCharacters": "Latin letters, numbers and special characters only",
+      "lowercaseLetter": "At least one lowercase letter (a-z)",
+      "uppercaseLetter": "At least one uppercase letter (A-Z)",
+      "specialCharacter": "At least one special character !@#$%^&*()\\-_=+{};:,<.>"
+    }
   },
   "cityCard": {
     "feelsLike": "Feels Like",

@@ -1,10 +1,10 @@
 @use "../../../../../assets/styles/mixins" as *;
 
 .city-card {
-  color: var(--on-surface);
+  color: var(--on-background);
   height: 290px;
   border-radius: 14px;
-  background-color: var(--btn-bg);
+  background-color: var(--background-low);
   padding: 10px;
   text-align: center;
   display: flex;
@@ -23,7 +23,7 @@
     justify-content: space-between;
   }
   &:hover {
-    background-color: var(--btn-bg-hover);
+    background-color: var(--background-high);
   }
   &__main {
     display: flex;

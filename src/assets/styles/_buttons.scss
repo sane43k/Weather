@@ -19,13 +19,18 @@
     font-weight: 600;
   }
   &-primary {
-    color: var(--on-surface);
-    background-color: var(--surface-bright);
+    height: 48px;
+    width: 100%;
+    color: var(--on-background);
+    background-color: var(--background-bright);
     box-shadow: var(--shadow);
     border: 1px solid transparent;
     border-radius: 15px;
     padding: 18px 20px;
     gap: 8px;
+    @include md-screen {
+      height: 38px;
+    }
     &:hover {
       opacity: 0.8;
     }
@@ -44,16 +49,13 @@
       color: var(--on-primary-fixed);
       background-color: var(--primary-fixed-dim);
       box-shadow: none;
-      &:hover {
-        opacity: 0.8;
-      }
     }
   }
   &-round {
     height: 45px;
     width: 45px;
-    color: var(--on-surface);
-    background-color: var(--btn-bg);
+    color: var(--on-background);
+    background-color: var(--background-low);
     border: 1px solid transparent;
     border-radius: 50%;
     @include md-screen {
@@ -65,13 +67,13 @@
       width: 35px;
     }
     &:hover {
-      background-color: var(--btn-bg-hover);
+      background-color: var(--background-high);
     }
     &:disabled {
       opacity: 0.6;
     }
     svg {
-      fill: var(--on-surface);
+      fill: var(--on-background);
     }
   }
   &-dropdown {

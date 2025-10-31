@@ -6,7 +6,7 @@
 
 .custom-input {
   font: var(--body-large);
-  color: var(--on-surface);
+  color: var(--on-background);
   min-width: 100px;
   display: flex;
   flex-direction: column;
@@ -23,10 +23,10 @@
     font: var(--body-large);
     font-weight: 400;
     line-height: 115%;
-    color: var(--on-surface);
+    color: var(--on-background);
     height: 48px;
     width: 100%;
-    background-color: var(--surface-bright);
+    background-color: var(--background-bright);
     border: 1px solid transparent;
     box-shadow: var(--shadow);
     border-radius: 14px;
@@ -40,18 +40,18 @@
       font: var(--body-small);
     }
     &:hover {
-      border: 1px solid var(--gray);
+      border: 1px solid var(--placeholder);
     }
     &:focus {
-      caret-color: var(--on-surface);
-      border: 1px solid var(--on-surface);
+      caret-color: var(--on-background);
+      border: 1px solid var(--on-background);
       outline: none;
     }
     &:disabled {
       opacity: 0.6;
     }
     &::placeholder {
-      color: var(--gray);
+      color: var(--placeholder);
     }
   }
 }

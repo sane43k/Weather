@@ -7,6 +7,7 @@ import { ThemeToggle } from '../../ui-kit/togglers/theme-toggle/theme-toggle';
 import { TemperatureToggle } from '../../ui-kit/togglers/temperature-toggle/temperature-toggle';
 import { CustomInput } from '../../ui-kit/form-controls/custom-input/custom-input';
 import { Sidebar } from '../../ui-kit/sidebar/sidebar';
+import { NavLoginBtn } from '../../ui-kit/nav-login-btn/nav-login-btn';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,7 @@ import { Sidebar } from '../../ui-kit/sidebar/sidebar';
     TemperatureToggle,
     CustomInput,
     Sidebar,
+    NavLoginBtn,
   ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
