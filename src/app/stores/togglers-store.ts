@@ -3,18 +3,18 @@ import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 
 export type Language = 'en' | 'ru';
 export type Theme = 'light' | 'dark' | 'system';
-export type Temperature = string;
+export type Units = 'standard' | 'metric' | 'imperial';
 
 interface TogglersState {
   language: Language;
   theme: Theme;
-  temperature: Temperature;
+  units: Units;
 }
 
 const initialState: TogglersState = {
   language: 'en',
   theme: 'system',
-  temperature: '',
+  units: 'metric',
 };
 
 export const TogglersStore = signalStore(
@@ -27,6 +27,9 @@ export const TogglersStore = signalStore(
     },
     updateTheme(theme: Theme): void {
       patchState(store, { theme });
+    },
+    updateUnits(units: Units): void {
+      patchState(store, { units });
     },
   }))
 );

@@ -1,11 +1,7 @@
 <section class="cities-section">
   <div class="container">
-    <app-city-preview-card></app-city-preview-card>
-    <app-city-preview-card></app-city-preview-card>
-    <app-city-preview-card></app-city-preview-card>
-    <app-city-preview-card></app-city-preview-card>
-    <app-city-preview-card></app-city-preview-card>
-    <app-city-preview-card></app-city-preview-card>
-    <app-city-preview-card></app-city-preview-card>
+    @for (cityWeather of citiesWeather(); track $index) {
+    <app-city-preview-card [cityWeather]="cityWeather"></app-city-preview-card>
+    }
   </div>
 </section>

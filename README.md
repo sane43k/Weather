@@ -10,6 +10,11 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 npm install
 ```
 
+## API
+
+- [OpenWeatherMap](https://openweathermap.org/api)
+- Paste your **API key** into the corresponding property in the src\app\services\weather-service.ts
+
 ## Development server
 
 To start a local development server, run:

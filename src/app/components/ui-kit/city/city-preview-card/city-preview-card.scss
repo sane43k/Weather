@@ -49,10 +49,10 @@
   &__name {
     font-size: 28px;
     @include md-screen {
-      font-size: 26px;
+      font-size: 24px;
     }
     @include sm-screen {
-      font-size: 24px;
+      font-size: 22px;
     }
   }
   &__weather {
@@ -63,10 +63,10 @@
     font-weight: 200;
     line-height: 1;
     @include md-screen {
-      font-size: 70px;
+      font-size: 65px;
     }
     @include sm-screen {
-      font-size: 60px;
+      font-size: 50px;
     }
   }
   &__details {

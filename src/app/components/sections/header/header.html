@@ -1,11 +1,8 @@
 <header class="header-section">
   <div class="container">
     <app-logo iconColor="blue" [hideTextOnSmallScreen]="true"></app-logo>
-    <div class="input-wrapper">
-      <app-custom-input
-        inputId="search-input"
-        [placeholder]="'header.enterCity' | translate"
-      ></app-custom-input>
+    <div class="form-wrapper">
+      <app-search-form></app-search-form>
     </div>
     <nav class="main-menu">
       <ul class="main-menu__list">
@@ -27,7 +24,7 @@
     <div class="togglers-wrapper">
       <app-language-toggle></app-language-toggle>
       <app-theme-toggle></app-theme-toggle>
-      <app-temperature-toggle></app-temperature-toggle>
+      <app-units-toggle></app-units-toggle>
     </div>
     <app-sidebar></app-sidebar>
   </div>

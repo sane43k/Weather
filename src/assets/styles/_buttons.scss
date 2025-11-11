@@ -58,6 +58,7 @@
     background-color: var(--background-low);
     border: 1px solid transparent;
     border-radius: 50%;
+    padding: 0;
     @include md-screen {
       height: 40px;
       width: 40px;
@@ -74,26 +75,6 @@
     }
     svg {
       fill: var(--on-background);
-    }
-  }
-  &-dropdown {
-    height: 30px;
-    width: 30px;
-    background-color: var(--btn);
-    border: transparent;
-    border-radius: 50%;
-    // background-image: url(../images/dropdown_black.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: all 0.2s ease-in-out;
-    &:hover {
-      background-color: var(--btn-hover);
-    }
-    &:disabled {
-      opacity: 0.6;
-    }
-    &.open {
-      transform: rotate(180deg);
     }
   }
 }

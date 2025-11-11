@@ -10,7 +10,8 @@
   --green: rgb(77, 203, 93);
   --yellow: rgb(252, 217, 79);
   --shadow: 0px 2px 15px rgba(25, 33, 61, 0.1);
-  --light-shadow: 0px 2px 15px rgba(110, 110, 116, 0.1);
+  --shadow-light: 0px 2px 15px rgba(110, 110, 116, 0.1);
+
   --shadow-level0: 0px 0px 0px 0px rgba(0, 0, 0, 0.2),
     0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
   --shadow-level1: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
@@ -122,10 +123,10 @@
 .light-theme {
   --header-background-transparent: #faf9fdc1;
   --background: #faf9fd;
-  --on-background: #1a1b1f;
   --background-bright: #faf9fd;
   --background-low: #f1f0f5;
   --background-high: #ebeaef;
+  --on-background: #1a1b1f;
   --placeholder: #c8c7cb;
 
   --primary-fixed-dim: #abc7ff;

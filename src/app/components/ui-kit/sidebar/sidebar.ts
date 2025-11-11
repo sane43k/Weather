@@ -3,9 +3,9 @@ import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '../../../pipes/translate-pipe';
 import { ThemeToggle } from '../togglers/theme-toggle/theme-toggle';
 import { LanguageToggle } from '../togglers/language-toggle/language-toggle';
-import { TemperatureToggle } from '../togglers/temperature-toggle/temperature-toggle';
 import { Logo } from '../logo/logo';
 import { NavLoginBtn } from '../nav-login-btn/nav-login-btn';
+import { UnitsToggle } from '../togglers/units-toggle/units-toggle';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,9 +14,9 @@ import { NavLoginBtn } from '../nav-login-btn/nav-login-btn';
     TranslatePipe,
     LanguageToggle,
     ThemeToggle,
-    TemperatureToggle,
     Logo,
     NavLoginBtn,
+    UnitsToggle,
   ],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',

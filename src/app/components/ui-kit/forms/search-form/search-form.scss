@@ -1,0 +1,61 @@
+@use "../../../../../assets/styles/mixins" as *;
+
+:host {
+  width: 100%;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  button {
+    height: 39px;
+    width: 39px;
+    border-radius: 14px;
+    position: absolute;
+    right: 5px;
+    @include md-screen {
+      height: 29px;
+      width: 29px;
+    }
+  }
+  .dropdown {
+    max-height: 240px;
+    background-color: var(--background-bright);
+    box-shadow: var(--shadow-light);
+    border-radius: 14px;
+    margin-top: 5px;
+    overflow-y: auto;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    @include md-screen {
+      max-height: 216px;
+    }
+    @include sm-screen {
+      max-height: 192px;
+    }
+    &.opened {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    &__item {
+      background-color: var(--background-bright);
+      padding: 8px 18px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      cursor: pointer;
+      &:hover {
+        background-color: var(--background-high);
+      }
+    }
+  }
+}
