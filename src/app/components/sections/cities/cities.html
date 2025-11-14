@@ -1,7 +1,15 @@
 <section class="cities-section">
   <div class="container">
-    @for (cityWeather of citiesWeather(); track $index) {
-    <app-city-preview-card [cityWeather]="cityWeather"></app-city-preview-card>
-    }
+    <div class="sort-wrapper">
+      <app-temperature-sort-toggle></app-temperature-sort-toggle>
+      <app-country-sort-toggle></app-country-sort-toggle>
+    </div>
+    <div class="cities-list">
+      @for (cityWeather of citiesWeather(); track $index) {
+      <app-city-preview-card
+        [cityWeather]="cityWeather"
+      ></app-city-preview-card>
+      }
+    </div>
   </div>
 </section>

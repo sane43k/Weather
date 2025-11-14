@@ -9,12 +9,14 @@ import { TogglersStore } from './togglers-store';
 interface CitiesState {
   citiesInfo: CityInfo[];
   citiesWeather: CityWeather[];
+  unsortedCitiesWeather: CityWeather[];
   searchHistory: string[];
 }
 
 const initialState: CitiesState = {
   citiesInfo: [],
   citiesWeather: [],
+  unsortedCitiesWeather: [],
   searchHistory: [],
 };
 
@@ -41,7 +43,7 @@ export const CitiesStore = signalStore(
       const cities = store.citiesInfo();
 
       if (cities.length === 0) {
-        patchState(store, { citiesWeather: [] });
+        patchState(store, { citiesWeather: [], unsortedCitiesWeather: [] });
         return;
       }
 
@@ -50,9 +52,15 @@ export const CitiesStore = signalStore(
       );
 
       forkJoin(citiesWeatherRequests).subscribe((citiesWeather) =>
-        patchState(store, { citiesWeather })
+        patchState(store, {
+          citiesWeather: citiesWeather,
+          unsortedCitiesWeather: citiesWeather,
+        })
       );
     };
+
+    const updateCitiesWeather = (citiesWeather: CityWeather[]): void =>
+      patchState(store, { citiesWeather });
 
     const updateSearchHistory = (cityName: string): void => {
       if (!cityName || cityName.trim() === '') return;
@@ -79,6 +87,7 @@ export const CitiesStore = signalStore(
     return {
       loadCitiesInfoByName,
       loadCityWeatherByCoords,
+      updateCitiesWeather,
       updateSearchHistory,
     };
   })
