@@ -13,6 +13,11 @@ export const routes: Routes = [
           import('./pages/main-page/main-page').then((c) => c.MainPage),
       },
       {
+        path: ':lat/:lon',
+        loadComponent: () =>
+          import('./pages/city-page/city-page').then((c) => c.CityPage),
+      },
+      {
         path: 'login',
         loadComponent: () =>
           import('./pages/login-page/login-page').then((c) => c.LoginPage),

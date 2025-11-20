@@ -1,0 +1,18 @@
+@use "../../../../assets/styles/mixins" as *;
+
+.daily-forecast-section {
+  .container {
+    .daily-forecast-list {
+      display: grid;
+      grid-template-columns: repeat(40, 145px);
+      gap: 15px;
+      overflow: auto;
+      @include md-screen {
+        grid-template-columns: repeat(40, 115px);
+      }
+      @include sm-screen {
+        grid-template-columns: repeat(40, 85px);
+      }
+    }
+  }
+}

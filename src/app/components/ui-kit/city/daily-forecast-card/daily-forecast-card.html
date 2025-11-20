@@ -1,0 +1,24 @@
+<div class="forecast-card">
+  <div class="forecast-card__date">{{ dayForecast?.dt || "Date" }}</div>
+  <div class="forecast-card__main">
+    <div class="forecast-card__weather">
+      {{ dayForecast?.weather?.[0]?.main || 'Weather' }}
+    </div>
+    <div class="forecast-card__icon">
+      <img
+        [src]="`https://openweathermap.org/img/wn/${dayForecast?.weather?.[0]?.icon}@2x.png`"
+        alt="Weather Icon"
+      />
+    </div>
+  </div>
+  <div class="forecast-card__range">
+    <span>
+      {{ "cityCard.highest" | translate }}:
+      {{ dayForecast?.temp?.max | temperature }}
+    </span>
+    <span>
+      {{ "cityCard.lowest" | translate }}:
+      {{ dayForecast?.temp?.min | temperature }}
+    </span>
+  </div>
+</div>

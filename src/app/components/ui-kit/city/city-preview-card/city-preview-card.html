@@ -1,4 +1,7 @@
-<div class="city-card">
+<div
+  class="city-card"
+  [routerLink]="['/', cityWeather?.coord?.lat, cityWeather?.coord?.lon]"
+>
   <div class="city-card__main">
     <div class="city-card__info">
       <div class="city-card__name">

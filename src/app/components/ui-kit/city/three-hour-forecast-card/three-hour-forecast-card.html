@@ -1,0 +1,19 @@
+<div class="forecast-card">
+  <div class="forecast-card__date">
+    {{ forecast3Hour?.dt_txt | dateShort }}
+  </div>
+  <div class="forecast-card__main">
+    <div class="forecast-card__weather">
+      {{ forecast3Hour?.weather?.[0]?.main || 'Weather' }}
+    </div>
+    <div class="forecast-card__icon">
+      <img
+        [src]="`https://openweathermap.org/img/wn/${forecast3Hour?.weather?.[0]?.icon}@2x.png`"
+        alt="Weather Icon"
+      />
+    </div>
+  </div>
+  <div class="forecast-card__temp">
+    {{ forecast3Hour?.main?.temp | temperature }}
+  </div>
+</div>

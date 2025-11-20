@@ -1,0 +1,11 @@
+<section class="daily-forecast-section">
+  <div class="container">
+    <div class="daily-forecast-list">
+      @for(forecast3Hour of forecast3HourFor5Days()?.list; track $index) {
+      <app-three-hour-forecast-card
+        [forecast3Hour]="forecast3Hour"
+      ></app-three-hour-forecast-card>
+      }
+    </div>
+  </div>
+</section>

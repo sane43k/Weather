@@ -3,6 +3,10 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TogglersStore } from '../stores/togglers-store';
 import { CityInfo, CityWeather } from '../interfaces/city-interface';
+import {
+  DailyForecast,
+  Forecast3HourFor5Days,
+} from '../interfaces/forecast-interface';
 
 @Injectable({
   providedIn: 'root',
@@ -25,6 +29,33 @@ export class WeatherService {
       `${
         this.apiUrl
       }/data/2.5/weather?lat=${lat}&lon=${lon}&lang=${this.togglersStore.language()}&units=${this.togglersStore.units()}&appid=${
+        this.apiKey
+      }`
+    );
+  }
+
+  get3HourForecastFor5DaysByCoords(
+    lat: number,
+    lon: number
+  ): Observable<Forecast3HourFor5Days> {
+    return this.http.get<Forecast3HourFor5Days>(
+      `${
+        this.apiUrl
+      }/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=${this.togglersStore.language()}&units=${this.togglersStore.units()}&appid=${
+        this.apiKey
+      }`
+    );
+  }
+
+  // Available only with paid subscriptions
+  getDailyForecastByCoords(
+    lat: number,
+    lon: number
+  ): Observable<DailyForecast> {
+    return this.http.get<DailyForecast>(
+      `${
+        this.apiUrl
+      }/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=16&lang=${this.togglersStore.language()}&units=${this.togglersStore.units()}&appid=${
         this.apiKey
       }`
     );

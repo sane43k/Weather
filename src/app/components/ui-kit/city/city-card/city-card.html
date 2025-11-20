@@ -1,0 +1,38 @@
+<div class="city-card">
+  <div class="city-card__main">
+    <div class="city-card__name">
+      {{ cityWeather?.name || "City" }},
+      {{ cityWeather?.sys?.country || "Country" }}
+    </div>
+    <div class="city-card__weather">
+      <div class="city-card__icon">
+        <img
+          [src]="`https://openweathermap.org/img/wn/${cityWeather?.weather?.[0]?.icon}@2x.png`"
+          alt="Weather Icon"
+        />
+      </div>
+      <span>{{ cityWeather?.weather?.[0]?.main || "Weather" }}</span>
+    </div>
+  </div>
+  <div class="city-card__details">
+    <div class="city-card__temp">
+      {{ cityWeather?.main?.temp | temperature }}
+    </div>
+    <div class="city-card__temp-details">
+      <div class="city-card__feels">
+        {{ "cityCard.feelsLike" | translate }}:
+        <span>{{ cityWeather?.main?.feels_like | temperature }}</span>
+      </div>
+      <div class="city-card__range">
+        <span>
+          {{ "cityCard.highest" | translate }}:
+          {{ cityWeather?.main?.temp_max | temperature }}
+        </span>
+        <span>
+          {{ "cityCard.lowest" | translate }}:
+          {{ cityWeather?.main?.temp_min | temperature }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
