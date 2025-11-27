@@ -1,0 +1,12 @@
+.favorites-section {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .favorites-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+  }
+}

@@ -13,9 +13,17 @@ export const routes: Routes = [
           import('./pages/main-page/main-page').then((c) => c.MainPage),
       },
       {
-        path: ':lat/:lon',
+        path: 'city',
         loadComponent: () =>
           import('./pages/city-page/city-page').then((c) => c.CityPage),
+      },
+      {
+        path: 'favorites',
+        loadComponent: () =>
+          import('./pages/favorites-page/favorites-page').then(
+            (c) => c.FavoritesPage
+          ),
+        title: 'Favorites',
       },
       {
         path: 'login',

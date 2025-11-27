@@ -16,8 +16,8 @@ export class ThreeHourForecast implements OnInit {
   forecast3HourFor5Days = this.cityStore.forecast3HourFor5Days;
 
   ngOnInit(): void {
-    const lat = Number(this.router.snapshot.paramMap.get('lat'));
-    const lon = Number(this.router.snapshot.paramMap.get('lon'));
+    const lat = Number(this.router.snapshot.queryParamMap.get('lat'));
+    const lon = Number(this.router.snapshot.queryParamMap.get('lon'));
 
     if (isNaN(lat) || isNaN(lon)) return;
 

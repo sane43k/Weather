@@ -59,14 +59,28 @@ p {
 
 h1,
 .h1-46pt {
-  font: 46px;
+  font-size: 46px;
   font-weight: 600;
+  line-height: 1;
+  @include md-screen {
+    font-size: 38px;
+  }
+  @include sm-screen {
+    font-size: 30px;
+  }
 }
 
 h2,
 .h2-38pt {
-  font: 38px;
+  font-size: 38px;
   font-weight: 600;
+  line-height: 1;
+  @include md-screen {
+    font-size: 30px;
+  }
+  @include sm-screen {
+    font-size: 22px;
+  }
 }
 
 ul,

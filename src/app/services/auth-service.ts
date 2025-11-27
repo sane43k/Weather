@@ -1,11 +1,15 @@
 import { isPlatformBrowser } from '@angular/common';
 import { effect, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { CityWeather } from '../interfaces/city-interface';
+import { UserStore } from '../stores/user-store';
 
 export interface User {
   id: number;
   email: string;
   password: string;
   role: 'user' | 'admin';
+  city: 'London' | 'Paris' | 'Berlin';
+  favoriteCities: CityWeather[];
 }
 
 @Injectable({
@@ -13,6 +17,7 @@ export interface User {
 })
 export class AuthService {
   private platformId = inject(PLATFORM_ID);
+  private userStore = inject(UserStore);
   private USERS_KEY = 'users';
   private CURRENT_USER_KEY = 'currentUser';
 
@@ -31,6 +36,14 @@ export class AuthService {
         JSON.stringify(this.currentUser())
       )
     );
+    effect(() => {
+      const currentUser = this.currentUser();
+      if (currentUser) {
+        this.userStore.setUser(currentUser);
+      } else {
+        this.userStore.resetUser();
+      }
+    });
   }
 
   private getUsers(): User[] {
@@ -58,6 +71,8 @@ export class AuthService {
       email,
       password,
       role: 'user',
+      city: 'London',
+      favoriteCities: [],
     };
 
     this.users.update((users) => [...users, newUser]);
@@ -77,5 +92,40 @@ export class AuthService {
 
   logOut(): void {
     this.currentUser.set(null);
+  }
+
+  addFavoriteCity(city: CityWeather): void {
+    const currentUser = this.currentUser();
+    if (!currentUser) return;
+
+    const updatedCurrentUser: User = {
+      ...currentUser,
+      favoriteCities: [city, ...currentUser.favoriteCities],
+    };
+
+    this.currentUser.set(updatedCurrentUser);
+    this.users.update((users) =>
+      users.map((user) =>
+        user.id === updatedCurrentUser.id ? updatedCurrentUser : user
+      )
+    );
+  }
+  removeFavoriteCity(city: CityWeather): void {
+    const currentUser = this.currentUser();
+    if (!currentUser) return;
+
+    const updatedCurrentUser: User = {
+      ...currentUser,
+      favoriteCities: currentUser.favoriteCities.filter(
+        (favCity) => favCity.id !== city.id
+      ),
+    };
+
+    this.currentUser.set(updatedCurrentUser);
+    this.users.update((users) =>
+      users.map((user) =>
+        user.id === updatedCurrentUser.id ? updatedCurrentUser : user
+      )
+    );
   }
 }
