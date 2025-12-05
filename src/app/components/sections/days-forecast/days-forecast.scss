@@ -2,11 +2,52 @@
 
 .days-forecast-section {
   .container {
-    .days-forecast-list {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
+    .days-forecast {
+      background-color: var(--background-low);
+      border-radius: 14px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
       gap: 15px;
-      //   overflow: auto;
+      @include sm-screen {
+        padding: 15px;
+        gap: 10px;
+        overflow-x: auto;
+      }
+      .days-forecast-list {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 15px;
+        @include sm-screen {
+          gap: 7px;
+        }
+      }
+    }
+  }
+}
+
+:host ::ng-deep {
+  app-three-hour-forecast-card {
+    .forecast-card {
+      background-color: var(--background);
+    }
+  }
+  .line-chart {
+    width: 100%;
+    height: 250px;
+    @include md-screen {
+      height: 200px;
+    }
+    @include sm-screen {
+      height: 175px;
+    }
+    .ngx-charts {
+      text {
+        fill: var(--on-background);
+      }
+      .gridline-path {
+        stroke: var(--background);
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 <div class="forecast-card">
   <div class="forecast-card__date">
-    {{ forecast3Hour?.dt_txt | dateShort }}
+    {{ forecast3Hour?.dt_txt | date : datePipeOption }}
   </div>
   <div class="forecast-card__main">
     <div class="forecast-card__weather">

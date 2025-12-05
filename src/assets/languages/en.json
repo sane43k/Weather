@@ -28,5 +28,7 @@
     "feelsLike": "Feels Like",
     "highest": "H",
     "lowest": "L"
-  }
+  },
+  "temperature": "Temperature",
+  "date": "Date"
 }
