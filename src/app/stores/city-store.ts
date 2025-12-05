@@ -1,11 +1,17 @@
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import {
+  patchState,
+  signalStore,
+  withComputed,
+  withMethods,
+  withState,
+} from '@ngrx/signals';
 import { CityWeather } from '../interfaces/city-interface';
 import {
   DailyForecast,
   Forecast3HourFor5Days,
 } from '../interfaces/forecast-interface';
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
-import { effect, inject, untracked } from '@angular/core';
+import { computed, effect, inject, untracked } from '@angular/core';
 import { WeatherService } from '../services/weather-service';
 import { TogglersStore } from './togglers-store';
 
@@ -25,6 +31,17 @@ export const CityStore = signalStore(
   { providedIn: 'root' },
   withDevtools('cityState'),
   withState(initialState),
+  withComputed(({ forecast3HourFor5Days }) => ({
+    daysForecast: computed(() => {
+      const forecast = forecast3HourFor5Days();
+      if (!forecast) return [];
+
+      return forecast?.list.filter((item) => {
+        if (!item.dt_txt) return false;
+        return new Date(item.dt_txt).getHours() === 15;
+      });
+    }),
+  })),
   withMethods((store) => {
     const weatherService = inject(WeatherService);
     const togglersStore = inject(TogglersStore);
