@@ -39,19 +39,5 @@
         gap: 30px;
       }
     }
-    .togglers-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      @include sm-screen {
-        display: none;
-      }
-    }
-    app-sidebar {
-      display: none;
-      @include md-screen {
-        display: initial;
-      }
-    }
   }
 }

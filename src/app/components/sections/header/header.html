@@ -7,25 +7,23 @@
     <nav class="main-menu">
       <ul class="main-menu__list">
         <li class="main-menu__list__item">
-          <a routerLink="/favorites" class="link">{{
-            "header.favorites" | translate
-          }}</a>
+          <a routerLink="/favorites" class="link">
+            {{ "header.favorites" | translate }}
+          </a>
         </li>
         <li class="main-menu__list__item">
-          <a routerLink="/compare" class="link">{{
-            "header.compare" | translate
-          }}</a>
+          <a routerLink="/compare" class="link">
+            {{ "header.compare" | translate }}
+          </a>
+        </li>
+        <li class="main-menu__list__item">
+          <app-city-select-form></app-city-select-form>
         </li>
         <li class="main-menu__list__item">
           <app-nav-login-btn></app-nav-login-btn>
         </li>
       </ul>
     </nav>
-    <div class="togglers-wrapper">
-      <app-language-toggle></app-language-toggle>
-      <app-theme-toggle></app-theme-toggle>
-      <app-units-toggle></app-units-toggle>
-    </div>
     <app-sidebar></app-sidebar>
   </div>
 </header>

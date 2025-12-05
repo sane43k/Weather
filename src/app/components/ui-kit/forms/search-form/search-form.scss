@@ -10,15 +10,8 @@
   justify-content: center;
   position: relative;
   button {
-    height: 39px;
-    width: 39px;
-    border-radius: 14px;
     position: absolute;
     right: 5px;
-    @include md-screen {
-      height: 29px;
-      width: 29px;
-    }
   }
   .dropdown {
     max-height: 240px;

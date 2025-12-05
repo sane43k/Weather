@@ -1,0 +1,8 @@
+<form class="city-select-form" [formGroup]="citySelectForm">
+  <app-select
+    formControlName="city"
+    name="citySelection"
+    placeholder="City"
+    [options]="citiesList"
+  ></app-select>
+</form>

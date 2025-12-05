@@ -1,6 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { effect, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
-import { CityWeather } from '../interfaces/city-interface';
+import { CityWeather, UserCity } from '../interfaces/city-interface';
 import { UserStore } from '../stores/user-store';
 
 export interface User {
@@ -8,7 +8,7 @@ export interface User {
   email: string;
   password: string;
   role: 'user' | 'admin';
-  city: 'London' | 'Paris' | 'Berlin';
+  city: UserCity;
   favoriteCities: CityWeather[];
 }
 
@@ -57,6 +57,15 @@ export class AuthService {
     return JSON.parse(localStorage.getItem(this.CURRENT_USER_KEY) || 'null');
   }
 
+  private updateCurrentUser(updatedCurrentUser: User): void {
+    this.currentUser.set(updatedCurrentUser);
+    this.users.update((users) =>
+      users.map((user) =>
+        user.id === updatedCurrentUser.id ? updatedCurrentUser : user
+      )
+    );
+  }
+
   signUp(email: string, password: string): boolean {
     const exists = this.users().find((user) => user.email === email);
     if (exists) return false;
@@ -71,7 +80,7 @@ export class AuthService {
       email,
       password,
       role: 'user',
-      city: 'London',
+      city: { value: 2643743, label: 'London', lat: 51.5081, lon: -0.1278 },
       favoriteCities: [],
     };
 
@@ -96,23 +105,24 @@ export class AuthService {
 
   addFavoriteCity(city: CityWeather): void {
     const currentUser = this.currentUser();
-    if (!currentUser) return;
+    if (!currentUser) {
+      this.userStore.addFavoriteCity(city);
+      return;
+    }
 
     const updatedCurrentUser: User = {
       ...currentUser,
       favoriteCities: [city, ...currentUser.favoriteCities],
     };
 
-    this.currentUser.set(updatedCurrentUser);
-    this.users.update((users) =>
-      users.map((user) =>
-        user.id === updatedCurrentUser.id ? updatedCurrentUser : user
-      )
-    );
+    this.updateCurrentUser(updatedCurrentUser);
   }
   removeFavoriteCity(city: CityWeather): void {
     const currentUser = this.currentUser();
-    if (!currentUser) return;
+    if (!currentUser) {
+      this.userStore.removeFavoriteCity(city);
+      return;
+    }
 
     const updatedCurrentUser: User = {
       ...currentUser,
@@ -121,11 +131,21 @@ export class AuthService {
       ),
     };
 
-    this.currentUser.set(updatedCurrentUser);
-    this.users.update((users) =>
-      users.map((user) =>
-        user.id === updatedCurrentUser.id ? updatedCurrentUser : user
-      )
-    );
+    this.updateCurrentUser(updatedCurrentUser);
+  }
+
+  updateCity(city: UserCity): void {
+    const currentUser = this.currentUser();
+    if (!currentUser) {
+      this.userStore.updateCity(city);
+      return;
+    }
+
+    const updatedCurrentUser: User = {
+      ...currentUser,
+      city,
+    };
+
+    this.updateCurrentUser(updatedCurrentUser);
   }
 }

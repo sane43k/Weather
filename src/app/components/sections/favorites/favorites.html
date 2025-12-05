@@ -1,12 +1,8 @@
 <section class="favorites-section">
   <div class="container">
-    <h2 class="h2-38pt">Favorites</h2>
-    <div class="favorites-list">
-      @for (favoriteCity of favoriteCities(); track $index) {
-      <app-city-preview-card
-        [cityWeather]="favoriteCity"
-      ></app-city-preview-card>
-      }
-    </div>
+    <app-city-preview-card-list
+      header="Favorites"
+      [citiesWeather]="favoriteCities()"
+    ></app-city-preview-card-list>
   </div>
 </section>

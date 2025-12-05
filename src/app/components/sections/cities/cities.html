@@ -4,12 +4,8 @@
       <app-temperature-sort-toggle></app-temperature-sort-toggle>
       <app-country-sort-toggle></app-country-sort-toggle>
     </div>
-    <div class="cities-list">
-      @for (cityWeather of citiesWeather(); track $index) {
-      <app-city-preview-card
-        [cityWeather]="cityWeather"
-      ></app-city-preview-card>
-      }
-    </div>
+    <app-city-preview-card-list
+      [citiesWeather]="citiesWeather()"
+    ></app-city-preview-card-list>
   </div>
 </section>

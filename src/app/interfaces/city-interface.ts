@@ -1,3 +1,10 @@
+export interface UserCity {
+  value: any;
+  label: string;
+  lat: number;
+  lon: number;
+}
+
 export interface CityInfo {
   name: string;
   local_names?: Record<string, string>;

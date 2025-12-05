@@ -1,0 +1,14 @@
+:host {
+  width: 100%;
+}
+
+.city-preview-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .city-preview-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+}

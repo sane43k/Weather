@@ -1,0 +1,94 @@
+@use "../../../../../assets/styles/mixins" as *;
+
+:host {
+  width: 100%;
+}
+
+.select-wrapper {
+  font-family: Noto Sans, sans-serif;
+  font: var(--body-large);
+  font-weight: 400;
+  color: var(--on-background);
+  height: 48px;
+  width: 100%;
+  background-color: var(--background-bright);
+  border: 1px solid transparent;
+  box-shadow: var(--shadow);
+  border-radius: 14px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: all 0.2s ease;
+  @include md-screen {
+    font: var(--body-medium);
+    height: 38px;
+  }
+  @include sm-screen {
+    font: var(--body-small);
+  }
+  &:hover {
+    border: 1px solid var(--placeholder);
+  }
+  &:focus {
+    caret-color: var(--on-background);
+    border: 1px solid var(--on-background);
+    outline: none;
+  }
+  &:disabled {
+    opacity: 0.6;
+  }
+  .select {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    &__display {
+      overflow: hidden;
+    }
+    button {
+      flex-shrink: 0;
+    }
+  }
+  .dropdown {
+    max-height: 120px;
+    background-color: var(--background-bright);
+    box-shadow: var(--shadow-light);
+    border-radius: 14px;
+    margin-top: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    @include md-screen {
+      max-height: 108px;
+    }
+    @include sm-screen {
+      max-height: 96px;
+    }
+    &.opened {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    &__item {
+      background-color: var(--background-bright);
+      padding: 8px 14px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      &:hover {
+        background-color: var(--background-high);
+      }
+    }
+  }
+}

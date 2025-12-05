@@ -1,5 +1,5 @@
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
-import { CityWeather } from '../interfaces/city-interface';
+import { CityWeather, UserCity } from '../interfaces/city-interface';
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { effect, inject, untracked } from '@angular/core';
 import { WeatherService } from '../services/weather-service';
@@ -10,7 +10,7 @@ interface UserState {
   id: number | null;
   email: string;
   role: 'user' | 'admin';
-  city: 'London' | 'Paris' | 'Berlin';
+  city: UserCity;
   favoriteCities: CityWeather[];
 }
 
@@ -18,7 +18,7 @@ const initialState: UserState = {
   id: null,
   email: '',
   role: 'user',
-  city: 'London',
+  city: { value: 2643743, label: 'London', lat: 51.5081, lon: -0.1278 },
   favoriteCities: [],
 };
 
@@ -41,6 +41,10 @@ export const UserStore = signalStore(
     };
     const resetUser = (): void => {
       patchState(store, { ...initialState });
+    };
+
+    const updateCity = (city: UserCity): void => {
+      patchState(store, { city });
     };
 
     const addFavoriteCity = (city: CityWeather): void => {
@@ -83,6 +87,12 @@ export const UserStore = signalStore(
       untracked(() => loadCityWeatherByCoords());
     });
 
-    return { setUser, resetUser, addFavoriteCity, removeFavoriteCity };
+    return {
+      setUser,
+      resetUser,
+      updateCity,
+      addFavoriteCity,
+      removeFavoriteCity,
+    };
   })
 );

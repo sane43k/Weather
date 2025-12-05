@@ -28,19 +28,14 @@ export class FavoritesToggle {
   toggleFavorites(event: Event): void {
     event.stopPropagation();
 
-    const currentUser = this.authService.currentUser();
     const cityWeather = this.cityWeather();
 
     if (!cityWeather) return;
 
     if (this.isFavorite) {
-      currentUser
-        ? this.authService.removeFavoriteCity(cityWeather)
-        : this.userStore.removeFavoriteCity(cityWeather);
+      this.authService.removeFavoriteCity(cityWeather);
     } else {
-      currentUser
-        ? this.authService.addFavoriteCity(cityWeather)
-        : this.userStore.addFavoriteCity(cityWeather);
+      this.authService.addFavoriteCity(cityWeather);
     }
   }
 }

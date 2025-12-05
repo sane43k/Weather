@@ -1,0 +1,45 @@
+<div
+  class="select-wrapper"
+  [attr.name]="name"
+  (click)="toggleDropdown()"
+  (blur)="onBlur()"
+>
+  <div class="select">
+    <div class="select__display">
+      {{ selectedOption?.label ?? placeholder }}
+    </div>
+    <button type="button" class="btn btn-round btn-round-sm">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 -960 960 960"
+        width="24px"
+        fill="currentColor"
+      >
+        @if (isDropdownOpen) {
+        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z" />
+        } @else {
+        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+        }
+      </svg>
+    </button>
+  </div>
+  <div class="dropdown" [class.opened]="isDropdownOpen">
+    @for (option of options; track $index) {
+    <div class="dropdown__item" (click)="selectOption(option, $event)">
+      @if (option.value === selectedOption?.value) {
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="16px"
+        viewBox="0 -960 960 960"
+        width="16px"
+        fill="currentColor"
+      >
+        <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
+      </svg>
+      }
+      {{ option.label }}
+    </div>
+    }
+  </div>
+</div>

@@ -1,7 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { CityCard } from '../../ui-kit/city/city-card/city-card';
 import { ActivatedRoute } from '@angular/router';
 import { CityStore } from '../../../stores/city-store';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-city',
@@ -9,18 +10,28 @@ import { CityStore } from '../../../stores/city-store';
   templateUrl: './city.html',
   styleUrl: './city.scss',
 })
-export class City implements OnInit {
+export class City implements OnInit, OnDestroy {
   private cityStore = inject(CityStore);
   private router = inject(ActivatedRoute);
+  private destroy$ = new Subject<void>();
 
   cityWeather = this.cityStore.cityWeather;
 
   ngOnInit(): void {
-    const lat = Number(this.router.snapshot.queryParamMap.get('lat'));
-    const lon = Number(this.router.snapshot.queryParamMap.get('lon'));
+    this.router.queryParams
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((params) => {
+        const lat = Number(params['lat']);
+        const lon = Number(params['lon']);
 
-    if (isNaN(lat) || isNaN(lon)) return;
+        if (isNaN(lat) || isNaN(lon)) return;
 
-    this.cityStore.loadCityWeatherByCoords(lat, lon);
+        this.cityStore.loadCityWeatherByCoords(lat, lon);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

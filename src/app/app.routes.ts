@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { coordsResolveGuard } from './guards/coords-resolve-guard';
 
 export const routes: Routes = [
   {
@@ -9,6 +10,12 @@ export const routes: Routes = [
     children: [
       {
         path: '',
+        canActivate: [coordsResolveGuard],
+        loadComponent: () =>
+          import('./pages/main-page/main-page').then((c) => c.MainPage),
+      },
+      {
+        path: 'main',
         loadComponent: () =>
           import('./pages/main-page/main-page').then((c) => c.MainPage),
       },

@@ -1,0 +1,10 @@
+<div class="city-preview-card-list">
+  @if (header) {
+  <h2 class="h2-38pt">{{ header }}</h2>
+  }
+  <div class="city-preview-cards">
+    @for (cityWeather of citiesWeather; track $index) {
+    <app-city-preview-card [cityWeather]="cityWeather"></app-city-preview-card>
+    }
+  </div>
+</div>
