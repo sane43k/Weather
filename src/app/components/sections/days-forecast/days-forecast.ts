@@ -1,13 +1,16 @@
 import { Component, computed, inject } from '@angular/core';
 import { CityStore } from '../../../stores/city-store';
 import { ThreeHourForecastCard } from '../../ui-kit/city/three-hour-forecast-card/three-hour-forecast-card';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DatePipe } from '@angular/common';
 import { TranslatePipe } from '../../../pipes/translate-pipe';
+import {
+  LineChart,
+  LineChartElement,
+} from '../../ui-kit/line-chart/line-chart';
 
 @Component({
   selector: 'app-days-forecast',
-  imports: [ThreeHourForecastCard, NgxChartsModule, TranslatePipe],
+  imports: [ThreeHourForecastCard, LineChart],
   templateUrl: './days-forecast.html',
   styleUrl: './days-forecast.scss',
   providers: [DatePipe, TranslatePipe],
@@ -18,7 +21,7 @@ export class DaysForecast {
   private translatePipe = inject(TranslatePipe);
 
   daysForecast = this.cityStore.daysForecast;
-  chartData = computed(() => [
+  chartData = computed<LineChartElement[]>(() => [
     {
       name: this.translatePipe.transform('temperature'),
       series: this.daysForecast().map((dayForecast) => ({

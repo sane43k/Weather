@@ -56,7 +56,11 @@ export const UserStore = signalStore(
       patchState(store, {
         favoriteCities: store
           .favoriteCities()
-          .filter((favCity) => favCity.id !== city.id),
+          .filter(
+            (favCity) =>
+              favCity.coord.lat !== city.coord.lat &&
+              favCity.coord.lon !== city.coord.lon
+          ),
       });
     };
 

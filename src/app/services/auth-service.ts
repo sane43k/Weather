@@ -127,7 +127,9 @@ export class AuthService {
     const updatedCurrentUser: User = {
       ...currentUser,
       favoriteCities: currentUser.favoriteCities.filter(
-        (favCity) => favCity.id !== city.id
+        (favCity) =>
+          favCity.coord.lat !== city.coord.lat &&
+          favCity.coord.lon !== city.coord.lon
       ),
     };
 

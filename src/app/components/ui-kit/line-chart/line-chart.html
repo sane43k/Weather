@@ -1,0 +1,15 @@
+<div class="line-chart">
+  <ngx-charts-line-chart
+    [results]="chartData"
+    [legend]="legend"
+    [animations]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [xAxisLabel]="xAxisLabel | translate"
+    [yAxisLabel]="yAxisLabel | translate"
+    [showXAxisLabel]="!!xAxisLabel"
+    [showYAxisLabel]="!!yAxisLabel"
+    [autoScale]="true"
+  >
+  </ngx-charts-line-chart>
+</div>

@@ -21,7 +21,11 @@ export class FavoritesToggle {
     effect(() => {
       this.isFavorite = this.userStore
         .favoriteCities()
-        .some((favCity) => favCity.id === this.cityWeather()?.id);
+        .some(
+          (favCity) =>
+            favCity.coord.lat === this.cityWeather()?.coord.lat &&
+            favCity.coord.lon === this.cityWeather()?.coord.lon
+        );
     });
   }
 

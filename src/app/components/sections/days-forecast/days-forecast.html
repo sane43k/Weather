@@ -9,21 +9,12 @@
         ></app-three-hour-forecast-card>
         }
       </div>
-      <div class="line-chart">
-        <ngx-charts-line-chart
-          [results]="chartData()"
-          [legend]="false"
-          [animations]="true"
-          [xAxis]="true"
-          [yAxis]="true"
-          [xAxisLabel]="'date' | translate"
-          [yAxisLabel]="'temperature' | translate"
-          [showXAxisLabel]="true"
-          [showYAxisLabel]="true"
-          [autoScale]="true"
-        >
-        </ngx-charts-line-chart>
-      </div>
+      <app-line-chart
+        [chartData]="chartData()"
+        [legend]="false"
+        xAxisLabel="date"
+        yAxisLabel="temperature"
+      ></app-line-chart>
     </div>
   </div>
 </section>

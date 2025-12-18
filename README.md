@@ -4,7 +4,7 @@ Follow current weather with this app
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.3 (\*updated to version 20.3.13)
 
-[Documentation](https://deepwiki.com/sane43k/Weather)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/sane43k/Weather)
 
 ## Install dependencies
 
