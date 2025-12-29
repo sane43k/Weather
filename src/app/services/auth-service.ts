@@ -2,6 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { effect, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { CityWeather, UserCity } from '../interfaces/city-interface';
 import { UserStore } from '../stores/user-store';
+import { DashboardStore } from '../stores/dashboard-store';
 
 export interface User {
   id: number;
@@ -18,11 +19,14 @@ export interface User {
 export class AuthService {
   private platformId = inject(PLATFORM_ID);
   private userStore = inject(UserStore);
+  private dashboardStore = inject(DashboardStore);
   private USERS_KEY = 'users';
   private CURRENT_USER_KEY = 'currentUser';
+  private DASHBOARD_CITIES_KEY = 'dashboardCities';
 
   users = signal<User[]>(this.getUsers());
   currentUser = signal<User | null>(this.getCurrentUser());
+  dashboardCities = signal<CityWeather[]>(this.getDashboardCities());
 
   constructor() {
     if (!isPlatformBrowser(this.platformId)) return;
@@ -36,6 +40,12 @@ export class AuthService {
         JSON.stringify(this.currentUser())
       )
     );
+    effect(() =>
+      localStorage.setItem(
+        this.DASHBOARD_CITIES_KEY,
+        JSON.stringify(this.dashboardCities())
+      )
+    );
     effect(() => {
       const currentUser = this.currentUser();
       if (currentUser) {
@@ -44,6 +54,7 @@ export class AuthService {
         this.userStore.resetUser();
       }
     });
+    effect(() => this.dashboardStore.updateCities(this.dashboardCities()));
   }
 
   private getUsers(): User[] {
@@ -56,13 +67,29 @@ export class AuthService {
 
     return JSON.parse(localStorage.getItem(this.CURRENT_USER_KEY) || 'null');
   }
+  private getDashboardCities(): CityWeather[] {
+    if (!isPlatformBrowser(this.platformId)) return [];
+
+    return JSON.parse(localStorage.getItem(this.DASHBOARD_CITIES_KEY) || '[]');
+  }
 
   private updateCurrentUser(updatedCurrentUser: User): void {
     this.currentUser.set(updatedCurrentUser);
     this.users.update((users) =>
-      users.map((user) =>
-        user.id === updatedCurrentUser.id ? updatedCurrentUser : user
-      )
+      users.map((user) => {
+        if (user.id === updatedCurrentUser.id) {
+          return updatedCurrentUser;
+        }
+
+        if (this.currentUser()?.role === 'admin' && user.role === 'admin') {
+          return {
+            ...user,
+            favoriteCities: updatedCurrentUser.favoriteCities,
+          };
+        }
+
+        return user;
+      })
     );
   }
 
@@ -83,6 +110,15 @@ export class AuthService {
       city: { value: 2643743, label: 'London', lat: 51.5081, lon: -0.1278 },
       favoriteCities: [],
     };
+
+    // const newUser: User = {
+    //   id: nextId,
+    //   email,
+    //   password,
+    //   role: 'admin',
+    //   city: { value: 2643743, label: 'London', lat: 51.5081, lon: -0.1278 },
+    //   favoriteCities: this.dashboardCities(),
+    // };
 
     this.users.update((users) => [...users, newUser]);
     this.currentUser.set(newUser);
@@ -110,6 +146,10 @@ export class AuthService {
       return;
     }
 
+    if (currentUser.role === 'admin') {
+      this.dashboardCities.set([city, ...this.dashboardCities()]);
+    }
+
     const updatedCurrentUser: User = {
       ...currentUser,
       favoriteCities: [city, ...currentUser.favoriteCities],
@@ -122,6 +162,16 @@ export class AuthService {
     if (!currentUser) {
       this.userStore.removeFavoriteCity(city);
       return;
+    }
+
+    if (currentUser.role === 'admin') {
+      this.dashboardCities.set(
+        this.dashboardCities().filter(
+          (dashboardCity) =>
+            dashboardCity.coord.lat !== city.coord.lat &&
+            dashboardCity.coord.lon !== city.coord.lon
+        )
+      );
     }
 
     const updatedCurrentUser: User = {
